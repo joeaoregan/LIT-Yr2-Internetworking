@@ -3,7 +3,7 @@
 Take Home Assignment for 2nd year Internetworking module of Games Design and Development - 
 BSc (Honours) in Computing (Level 8) course. 
 
-2 Perl Client and Server socket applications
+2 Perl Client and Server socket applications, originally created as part of a group assigment.
 
 <b>Client-Server 1: </b>
 The Client receives a question from the Server "What is your name?". 
