@@ -6,8 +6,7 @@
 # "What is your name?"
 # The Client sends a reply string to the Server with the name
 # The Server then sends a reply to he Client
-# depending on if the name matches the name stored 
-# the Server
+# depending on if the name matches the name stored by the Server
 # If the name is Joe the Server returns a greeting
 # otherwise the Client must enter a password
 # If the password is correct the Client receives a positive response

@@ -15,7 +15,7 @@ use IO::Socket;		# Module built on socket with functions & variables
 # create a connecting socket
 my $socket = new IO::Socket::INET (
     PeerHost => 'localhost',			# (PeerAddr) The remote host address
-    PeerPort => '7777',					# Port (must be same as Server)
+    PeerPort => '8000',					# Port (must be same as Server)
     Proto => 'tcp');					# Uses TCP protocol
 die "Cannot connect to the server $!\n" unless $socket; # Error message
 
