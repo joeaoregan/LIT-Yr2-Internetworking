@@ -1,11 +1,12 @@
-# Games Design and Development: Year 2
-# Internetworking CA
-
-## Joe O'Regan
-## K00203642
-## 10/04/2016
+# Internetworking
+## Joe O'Regan (K00203642)
+### Year 2, Semester 4
+#### BSc Computing (Games Design and Development)
+##### 10/04/2016
 
 ---
+
+## Internetworking CA
 
 Take Home Assignment for 2nd year Internetworking module of Games Design and Development - BSc (Honours) in Computing (Level 8) course. 
 
