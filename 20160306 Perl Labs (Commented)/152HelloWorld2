@@ -1,0 +1,14 @@
+#!/usr/bin/perl -w		# Perl binaries location
+# Lab 2 - Program 2
+# Asking Questions And Remembering The Result
+
+# Hello World program with scaler variables
+
+# Joe O'Regan
+# 29/01/2016
+
+print "What is your name? ";	# prompt user to enter name
+$name = <STDIN>;		# user scaler variable "$name" to hold name, <STDIN> construct grabs one line of input
+chomp ($name);			# chomp removes trailing newline (\n) form input
+print "Hello, $name!\n";	# ouput to screen
+

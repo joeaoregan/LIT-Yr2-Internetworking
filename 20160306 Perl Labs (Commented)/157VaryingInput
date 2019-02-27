@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+# Lab 3 - Program 7
+# Handling Varying Input Formats
+
+# Joe O'Regan
+# 05/02/2016
+
+# To vary input, the match operator =~ and ^. Within slash delimiters spaces are important. 
+# \b (word boundary special marker) is used so the character following the expression is not another letter. 
+# A small i after the closing / is to ignore the case. 
+# /^joe/I would accept “Joe” as input, ignoring case, 
+# but /^jon\b/I would allow Jon or Jon Ryan, but not Jonathan as input.
+
+%words = qw(fred camel
+	    barney llama
+	    betty alpaca
+	    wilma alpaca
+	    );
+print "What is your name? ";
+$name = <STDIN>;
+chomp ($name);
+# =~ (match operator), ^Randal (String beginning with "Randal"), i (ignore case), \b (word boundary), // (whitespace significant within slashes)
+if ($name =~ /^randal\b/i) 				
+{
+  print "Hello, Randal! How good of you to be here!\n";
+} 
+else 
+{
+  print "Hello, $name!\n"; 				# ordinary greeting
+  $secretword = $words{$name}; 				# get the secret word
+  if ($secretword eq "") 
+  { 							# oops, not found
+    $secretword = "groucho"; 				# sure, why a duck?
+  }
+  print "What is the secret word? ";
+  $guess = <STDIN>;
+  chomp ($guess);
+  while ($guess ne $secretword) 
+  {
+    print "Wrong, try again. What is the secret word? ";
+    $guess = <STDIN>;
+    chomp ($guess);
+  }
+}
+

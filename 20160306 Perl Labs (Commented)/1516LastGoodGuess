@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+# Lab 5 - Program 16
+# Maintaining A Last-Good-Guess Database
+
+# Joe O'Regan
+# 26/02/2016
+
+# Maintaining A Last-Good-Guess Database
+# Keep track of when the most recent correct good guess has been made for each user
+
+# mapped hash, dbmopen (maps a hash to a file), foreach loop, sorting a list, getting the keys of an array
+
+dbmopen (%last_good,"lastdb",0666) ||	# dbmopen maps a hash into a DBM disk file
+die "can't dbmopen lastdb: $!";
+foreach $name (sort keys (%last_good)) 	# foreach loop, sort alphabetically the keys in last_good hash
+{
+  $when = $last_good{$name};
+  $hours = (time() - $when) / 3600; 	# compute hours ago
+  write;				# write information to format section
+}
+format STDOUT =
+User @<<<<<<<<<<<: last correct guess was @<<< hours ago.
+$name, $hours
+.
+

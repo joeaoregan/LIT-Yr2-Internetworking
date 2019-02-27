@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+# Lab 5 - Program 17b
+# Final secret word lister
+
+# Joe O'Regan
+# 26/02/2016
+
+dbmopen (%last_good,"lastdb",0666);
+foreach $name (sort keys %last_good) 
+{
+  $when = $last_good{$name};
+  $hours = (time - $when) / 3600; 				# compute hours ago
+  write;
+}
+format STDOUT =
+User @<<<<<<<<<<<: last correct guess was @<<< hours ago.
+$name, $hours
+.
+

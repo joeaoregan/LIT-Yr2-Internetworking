@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+# Lab 5 - Program 17b
+# Final secret word lister
+
+# Joe O'Regan
+# 26/02/2016
+
+while ($filename = <*.secret>) 
+{
+  open (WORDSLIST, $filename) ||		# open .secret files
+  die "can't open $filename: $!";
+  if (-M WORDSLIST < 7.0) 			# check less than 7 days since last modified
+  {
+    while ($name = <WORDSLIST>)			# output each name and secret word from file(s)
+    {
+      chomp ($name);
+      $word = <WORDSLIST>;
+      chomp ($word);
+      write; 					# invoke format STDOUT to STDOUT
+    }
+  }
+  close (WORDSLIST);				# close the wordlist
+}
+
+format STDOUT =					# format the screen output
+@<<<<<<<<<<<<<<< @<<<<<<<<< @<<<<<<<<<<<
+$filename, $name, $word
+.
+format STDOUT_TOP =
+Page @<<
+$%
+Filename
+Name
+Word
+================ ========== ============
+.
+

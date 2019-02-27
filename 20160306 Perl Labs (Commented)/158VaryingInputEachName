@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+# Lab 4 - Program 8
+# Making It Fair For The Rest
+
+# Joe O'Regan
+# 12/02/2016
+
+# back up name entered, before taking just the first word, and converting to lowercase
+
+# s (substitute operator), tr (translate operator), \W (nonword character), 
+# .* (any character from there to the end of the line), // (replace with empty string)
+
+%words = qw(fred camel
+	    barney llama
+	    betty alpaca
+	    wilma alpaca
+	    );
+print "What is your name? ";
+$name = <STDIN>;
+chomp ($name);
+
+$original_name = $name; 				# NEW - save $name for greeting
+$name =~ s/\W.*//; 					# NEW - get rid of everything after first word
+$name =~ tr/A-Z/a-z/; 					# NEW - lowercase everything
+
+if ($name eq "randal")  				# Change back - ok to compare this way now
+{
+  print "Hello, Randal! How good of you to be here!\n";
+} 
+else 
+{
+  print "Hello, $original_name!\n"; 			# ordinary greeting (backed up name)
+  $secretword = $words{$name}; 				# get the secret word
+  if ($secretword eq "") 
+  { 							# oops, not found
+    $secretword = "groucho"; 				# sure, why a duck?
+  }
+  print "What is the secret word? ";
+  $guess = <STDIN>;
+  chomp ($guess);
+  while ($guess ne $secretword) 
+  {
+    print "Wrong, try again. What is the secret word? ";
+    $guess = <STDIN>;
+    chomp ($guess);
+  }
+}

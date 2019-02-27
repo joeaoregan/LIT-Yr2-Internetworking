@@ -1,0 +1,78 @@
+#!/usr/bin/perl
+# Lab 5 - Program 17a
+# Final "say hello" program
+
+# Joe O'Regan
+# 26/02/2016
+
+init_words();
+print "what is your name? ";
+$name = <STDIN>;
+chomp($name);
+if ($name =~ /^randal\b/i) 
+{ 								# back to the other way :-)
+  print "Hello, Randal! How good of you to be here!\n";
+} 
+else 
+{
+  print "Hello, $name!\n"; 					# ordinary greeting
+  print "What is the secret word? ";
+  $guess = <STDIN>;
+  chomp $guess;
+  while (! good_word($name,$guess)) 				# check for a good guess
+  {
+    print "Wrong, try again. What is the secret word? ";
+    $guess = <STDIN>;
+    chomp $guess;
+  }
+}
+dbmopen (%last_good,"lastdb",0666);				# last-good-guess database
+$last_good{$name} = time;
+dbmclose (%last_good);
+
+sub init_words 
+{
+  while ($filename = <*.secret>) 				# open secret words files .secret
+  {
+    open (WORDSLIST, $filename)||
+    die "can't open $filename: $!";
+    if (-M WORDSLIST < 7.0) 
+    {
+      while ($name = <WORDSLIST>) 
+      {
+        chomp ($name);
+        $word = <WORDSLIST>;
+        chomp ($word);
+        $words{$name} = $word;
+      }
+    } 
+    else 
+    { 								# rename the file so it gets noticed
+      rename ($filename,"$filename.old") ||
+      die "can't rename $filename: $!";
+    }
+    close WORDSLIST;
+  }
+}
+
+sub good_word 
+{
+  my($somename,$someguess) = @_; 				# name the parameters
+  $somename =~ s/\W.*//; 					# delete everything after first word
+  $somename =~ tr/A-Z/a-z/; 					# lowercase everything
+  if ($somename eq "randal") 
+  { 								# should not need to guess
+    return 1; 							# return value is true
+  } 
+  elsif (($words{$somename} || "groucho") eq $someguess) 
+  {
+    return 1; 							# return value is true
+  }
+  else 
+  {
+    open (MAIL, "|mail YOUR_ADDRESS_HERE");			# send incorrect guess as mail
+    print MAIL "bad news: $somename guessed $someguess\n";
+    close MAIL;
+    return 0; 							# return value is false
+  }
+}

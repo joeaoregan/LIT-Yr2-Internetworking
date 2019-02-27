@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+# Lab 4 - Program 10
+# Moving The Secret Word List Into A Separate File
+
+# Joe O'Regan
+# 12/02/2016
+
+# Wordlist formatted one item per line, holds names and words
+
+# open / close (use file, close file), filehandle (I/O channel), undef / defined (read file until empty line reached), die (error), $!, contains system error message
+
+init_words();				# NEW - Subroutine definition, invoke init_words subroutine
+print "What is your name? ";
+$name = <STDIN>;
+chomp $name;
+if ($name =~ /^randal\b/i) 
+{ 					# NEW - back to the other way :-)
+  print "Hello, Randal! How good of you to be here!\n";
+} 
+else 
+{
+  print "Hello, $name!\n"; 		# ordinary greeting
+  print "What is the secret word? ";
+  $guess = <STDIN>;
+  chomp ($guess);
+  while (! good_word($name,$guess)) 
+  {
+    print "Wrong, try again. What is the secret word? ";
+    $guess = <STDIN>;
+    chomp ($guess);
+  }
+}
+## subroutines from here down
+sub init_words 
+{
+  open (WORDSLIST, "wordslist") 	 # handle attached to file, filehandle WORDLIST file wordlist
+    || die "can't open wordlist: $!";	 # die - exit with an error message
+  while ( defined ($name = <WORDSLIST>)) # reads lines into $name, read terminates at empty string
+  {					 # defined tests for undef
+    chomp ($name);
+    $word = <WORDSLIST>;
+    chomp $word;
+    $words{$name} = $word;			# put $word int %words with a key of $name
+  }
+  close (WORDSLIST) 				# close file
+    || die "couldn't close wordlist: $!";	# Check for true return value from close
+}						# $! - contains system error message
+sub good_word 
+{
+  my($somename,$someguess) = @_; 		# name the parameters
+  $somename =~ s/\W.*//;			# delete everything after first word
+  $somename =~ tr/A-Z/a-z/;			# lowercase everything
+  if ($somename eq "randal") 
+  {						# should not need to guess
+    return 1;					# return value is true
+  } 
+  elsif (($words{$somename} || "groucho") eq $someguess) 
+  {
+    return 1;					# return value is true
+  } 
+  else 
+  {
+    return 0;					# return value is false
+  }
+}

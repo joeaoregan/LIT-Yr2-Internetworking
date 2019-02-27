@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+dbmopen (%last_good,"lastdb2",0666) ||
+die "can't dbmopen lastdb: $!";
+$last_good($name) = time;
+dbmclose (%last_good) || "can't dbmclose lastdb: $!";
+

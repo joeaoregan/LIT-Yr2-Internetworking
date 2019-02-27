@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+# Lab 2 - Program 3
+# Adding Choices
+
+# Hello World program with name compare
+# String comparison, and if-else statements
+
+# Joe O'Regan
+# 29/01/2016
+
+print "What is your name? ";				# prompt user to enter name
+$name = <STDIN>;					# user scaler variable "$name" to hold name, <STDIN> construct grabs one line of input
+chomp ($name);						# chomp removes trailing newline (\n) form input
+
+if ($name eq "Randal") 					# eq compare if name string is equal to the string "Randal"
+{							# if-then-else branch
+  print "Hello, Randal! How good of you to be here!\n";	# if name equals print this line, else go to next line
+} 
+else 
+{
+  print "Hello, $name!\n"; 				# Prints ordinary greeting when name is not Randal
+}
+

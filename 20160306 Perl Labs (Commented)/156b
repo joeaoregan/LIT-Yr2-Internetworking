@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+# Lab 3 - Program 6 Part b
+# Giving Each Person A Different Secret Word (Part b)
+
+# Table / Hash, NEW - set secretword for anyone not named in the hash
+
+# Joe O'Regan
+# 05/02/2016
+
+# If name is not found the secret word is set to groucho
+# Fixes problem of an empty string being set as password if users name not in hash list
+
+%words = qw(fred camel
+	    barney llama
+	    betty alpaca
+	    wilma alpaca
+	    );
+print "What is your name? ";
+$name = <STDIN>;
+chomp ($name);
+if ($name eq "Randal") 
+{
+  print "Hello, Randal! How good of you to be here!\n";
+} 
+else 
+{
+  print "Hello, $name!\n";				# ordinary greeting
+  $secretword = $words{$name}; 				# get the secret word
+  if ($secretword eq "")				# NEW - if secretword string is empty (""), secretword set to "groucho"
+  {							# oops, not found
+    $secretword = "groucho"; 				# sure, why a duck?
+  }
+  print "What is the secret word? ";
+
+  $guess = <STDIN>;
+  chomp ($guess);
+  while ($guess ne $secretword) 
+  {
+    print "Wrong, try again. What is the secret word? "; 
+    $guess = <STDIN>;
+    chomp ($guess);
+  }
+}
+
+
