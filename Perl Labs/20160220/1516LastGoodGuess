@@ -1,0 +1,13 @@
+#!/usr/bin/perl -w
+dbmopen (%last_good,"lastdb",0666) ||
+die "can't dbmopen lastdb: $!";
+foreach $name (sort keys (%last_good)) {
+$when = $last_good{$name};
+$hours = (time() - $when) / 3600; # compute hours ago
+write;
+}
+format STDOUT =
+User @<<<<<<<<<<<: last correct guess was @<<< hours ago.
+$name, $hours
+.
+
