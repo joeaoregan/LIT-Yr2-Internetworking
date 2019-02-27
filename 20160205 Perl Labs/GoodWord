@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+%words = qw(
+    fred	camel
+    barney	llama
+    betty	alpaca
+    wilma	alpaca
+    );
+print "What is your name? ";
+$name = <STDIN>;
+chomp ($name);
+if ($name =~ /^randal\b/i) { 		# back to the other way :-)
+    print "Hello, Randal! How good of you to be here!\n";
+} else {
+    print "Hello, $name!\n"; 		# ordinary greeting
+    print "What is the secret word? ";
+$guess = <STDIN>;
+chomp ($guess);
+while (! good_word($name,$guess)) {
+print "Wrong, try again. What is the secret word? ";
+$guess = <STDIN>;
+chomp ($guess);
+}}
+
+# good word subroutine
+
+sub good_word {
+my($somename,$someguess) = @_; 		# name the parameters
+$somename =~ s/\W.*//; 			# get rid of everything after first word
+$somename =~ tr/A-Z/a-z/; 		# lowercase everything
+if ($somename eq "randal") { 		# should not need to guess
+return 1; 	# return value is true
+} elsif (($words{$somename} || "groucho") eq $someguess) {
+return 1; 	# return value is true
+} else {
+return 0; 	# return value is false
+}
+}

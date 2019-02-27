@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+while ($filename = <*.secret>) {
+open (WORDSLIST, $filename) ||
+die "can't open $filename: $!";
+if (-M WORDSLIST < 7.0) {
+while ($name = <WORDSLIST>) {
+chomp ($name);
+$word = <WORDSLIST>;
+chomp ($word);
+write; # invoke format STDOUT to STDOUT
+}
+}
+close (WORDSLIST);
+}
+format STDOUT =
+@<<<<<<<<<<<<<<< @<<<<<<<<< @<<<<<<<<<<<
+$filename, $name, $word
+.
+format STDOUT_TOP =
+Page @<<
+$%
+Filename
+Name
+Word
+================ ========== ============
+.

@@ -41,3 +41,9 @@ This utility includes a separate client and server socket that extends the first
 | 2 | **jor_s1.pl** | Server Application 1 |
 | 3 | **jor_c2.pl** | Client Application 2 |
 | 4 | **jor_s2.pl** | Server Application 2 |
+
+--- 
+
+## Links
+
+[Learn Perl](http://learn.perl.org/)
