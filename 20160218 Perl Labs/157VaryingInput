@@ -1,0 +1,64 @@
+#!/usr/bin/perl
+
+
+# Handling Varying Input formats
+
+%words = qw(
+fred
+camel
+barney
+llama
+betty
+alpaca
+wilma
+alpaca
+);
+
+print "What is your name? ";
+
+$name = <STDIN>;
+
+chomp ($name);
+
+
+# Works for any string beginning with randal (in any case)
+if ($name =~ /^randal\b/i) 	# i = ignore case
+{
+				# \b = word boundary special marker
+  print "Hello, Randal! How good of you to be here!\n";
+
+} 
+else 
+{
+
+  print "Hello, $name!\n"; 	# ordinary greeting
+  
+$secretword = $words{$name}; 	# get the secret word
+
+
+  if ($secretword eq "") 
+  { 				# oops, not found
+
+    $secretword = "groucho"; 	# sure, why a duck?
+  
+}
+
+  print "What is the secret word? ";
+  
+$guess = <STDIN>;
+
+  chomp ($guess);
+  
+while ($guess ne $secretword) 
+  {
+
+    print "Wrong, try again. What is the secret word? ";
+    
+$guess = <STDIN>;
+
+    chomp ($guess);
+  
+}
+
+}
+
