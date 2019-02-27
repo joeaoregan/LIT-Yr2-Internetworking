@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+# Hello World with name compare
+
+print "What is your name? ";
+$name = <STDIN>;
+chomp ($name);
+# eq compare name string to the string "Randal"
+if ($name eq "Randal") {					# if-then-else branch
+	print "Hello, Randal! How good of you to be here!\n";
+} else {
+	print "Hello, $name!\n"; 				# ordinary greeting
+}
+
