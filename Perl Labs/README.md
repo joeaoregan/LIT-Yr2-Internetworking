@@ -6,6 +6,19 @@
 
 # Perl Labs
 
+## Introduction to Perl
+
+1. Create a directory for Perl scripts in your home directory.
+2. Over the next 5-6 weeks you will be introduced to the scripting language called Perl and you will use it to script simple utilities. You will follow the handout provided, which is an excerpt from the popular O’Reilly book “Learning Perl”.  
+    1. Read the handout and when it presents a Perl script: edit the script in vi or gedit; save it to the directory you created; change the mode of the file to executable for the owner, chmod 744 script_name; run it by typing the command perl script_name or ./script_name at the prompt. (NB replace script_name in the above commands with the name you used when you saved your script. I suggest you name your scripts starting with the page number from the handout e.g. p7xxx.)  
+    1. Comment your scripts liberally to explain exactly what is going on as it will be a good exercise for you and it will provide you with a useful learning\ revision tool as well as assisting you in the write of your reflection on the lab for the CA workbook assignment.
+3. The aim is to complete all the scripts in the chapter. Furthermore the take home programming
+assignment is a programming assignment in Perl using socket functionality, which you will
+
+_**Note: You should be making notes and observations in your lab book on the commands used, functions called etc, which will assist you in your reflective lab report assignment..**_
+
+
+have to learn yourself as part of the assignment. However we will be looking at and running socket programmes in C, i.e. so called client-server apps.
 
 ---
 
