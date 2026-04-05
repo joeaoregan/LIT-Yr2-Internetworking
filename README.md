@@ -15,7 +15,15 @@
 
 ### Limerick Institute of Technology
 #### Year 2, Semester 4
+
 * 10/04/2016
+
+**Student Name**: Joe O'Regan  
+**Student Number**: K00203642  
+**Course**: BSc (Honours) in Computing (Games Design and Development)  
+**Module**: Internetworking
+
+[Portfolio Docs](https://joeaoregan.github.io/college/2018-lit/year2/#internetworking)
 
 ---
 
